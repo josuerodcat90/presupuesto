@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Question from './components/Question';
 import Form from './components/Form';
 import List from './components/List';
+import Presupuesto from './components/Presupuesto';
 
 function App() {
 	const [presupuesto, setPresupuesto] = useState(0);
 	const [restante, setRestante] = useState(0);
 	const [showQuestion, setShowQuestion] = useState(true);
 	const [gastos, setGastos] = useState([]);
+	const [gasto, setGasto] = useState({});
 
-	const addNewGasto = (gasto) => {
+	useEffect(() => {
 		setGastos([...gastos, gasto]);
-	};
+	}, [gasto]);
 
 	return (
 		<>
@@ -29,10 +31,11 @@ function App() {
 						) : (
 							<div className='row'>
 								<div className='one-half column'>
-									<Form addNewGasto={addNewGasto} />
+									<Form setGasto={setGasto} />
 								</div>
 								<div className='one-half column'>
-									<List />
+									<List gastos={gastos} />
+									<Presupuesto presupuesto={presupuesto} restante={restante} />
 								</div>
 							</div>
 						)}

@@ -1,11 +1,16 @@
 import React from 'react';
 
-const List = () => {
+import Gasto from './Gasto';
+
+const List = ({ gastos }) => {
 	return (
 		<>
-			<ul>
-				<li>Desde la lista</li>
-			</ul>
+			<div className='gastos-realizados'>
+				<h2>Listado</h2>
+				{gastos.map((gasto) => (
+					<Gasto gasto={gasto} key={gasto.id} />
+				))}
+			</div>
 		</>
 	);
 };
