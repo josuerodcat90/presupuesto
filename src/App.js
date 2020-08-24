@@ -11,16 +11,26 @@ function App() {
 	const [showQuestion, setShowQuestion] = useState(true);
 	const [gastos, setGastos] = useState([]);
 	const [gasto, setGasto] = useState({});
+	const [showGasto, setShowGasto] = useState(false);
 
 	useEffect(() => {
-		setGastos([...gastos, gasto]);
-	}, [gasto]);
+		if (showGasto) {
+			setGastos([...gastos, gasto]);
+
+			/// set presupuesto restante
+			const presupuestoRestante = restante - gasto.cantidad;
+			setRestante(presupuestoRestante);
+
+			/// set to false
+			setShowGasto(false);
+		}
+	}, [gasto, showGasto, gastos, restante]);
 
 	return (
 		<>
 			<div className='container'>
 				<header>
-					<h1>Gastos Semanales</h1>
+					<h1>Gestión de Presupuesto</h1>
 					<div className='contenido-principal contenido'>
 						{showQuestion ? (
 							<Question
@@ -31,7 +41,7 @@ function App() {
 						) : (
 							<div className='row'>
 								<div className='one-half column'>
-									<Form setGasto={setGasto} />
+									<Form setGasto={setGasto} setShowGasto={setShowGasto} />
 								</div>
 								<div className='one-half column'>
 									<List gastos={gastos} />
