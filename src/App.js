@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Pregunta from './components/Pregunta';
 
 function App() {
+	const [presupuesto, setPresupuesto] = useState(0);
+	const [restante, setRestante] = useState(0);
+
 	return (
 		<>
 			<div className='container'>
 				<header>
 					<h1>Gastos Semanales</h1>
+					<div className='contenido-principal contenido'>
+						<Pregunta
+							setPresupuesto={setPresupuesto}
+							setRestante={setRestante}
+						/>
+					</div>
 				</header>
 			</div>
 		</>
