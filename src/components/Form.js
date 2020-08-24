@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import shortid from 'shortid';
 
 import Error from './Error';
 
-const Form = ({ addNewGasto }) => {
+const Form = ({ setGasto, setShowGasto }) => {
 	const [nombre, setNombre] = useState('');
 	const [cantidad, setCantidad] = useState(0);
 	const [error, setError] = useState(false);
@@ -25,7 +26,8 @@ const Form = ({ addNewGasto }) => {
 		};
 
 		/// Pass the Qty to the principal component
-		addNewGasto(gasto);
+		setGasto(gasto);
+		setShowGasto(true);
 
 		/// Reset Form
 		setCantidad(0);
@@ -69,6 +71,11 @@ const Form = ({ addNewGasto }) => {
 			/>
 		</form>
 	);
+};
+
+Form.propTypes = {
+	setGasto: PropTypes.func.isRequired,
+	setShowGasto: PropTypes.func.isRequired,
 };
 
 export default Form;

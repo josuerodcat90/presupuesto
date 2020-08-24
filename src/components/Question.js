@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import Error from './Error';
 
@@ -48,6 +49,12 @@ const Question = ({ setPresupuesto, setRestante, setShowQuestion }) => {
 			</form>
 		</>
 	);
+};
+
+Question.propTypes = {
+	setPresupuesto: PropTypes.func.isRequired,
+	setRestante: PropTypes.func.isRequired,
+	setShowQuestion: PropTypes.func.isRequired,
 };
 
 export default Question;
