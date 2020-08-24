@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
-import Pregunta from './components/Pregunta';
+import Question from './components/Question';
 import Form from './components/Form';
+import List from './components/List';
 
 function App() {
 	const [presupuesto, setPresupuesto] = useState(0);
 	const [restante, setRestante] = useState(0);
-	const [showPregunta, setShowPregunta] = useState(true);
+	const [showQuestion, setShowQuestion] = useState(true);
 	const [gastos, setGastos] = useState([]);
 
 	const addNewGasto = (gasto) => {
@@ -19,18 +20,20 @@ function App() {
 				<header>
 					<h1>Gastos Semanales</h1>
 					<div className='contenido-principal contenido'>
-						{showPregunta ? (
-							<Pregunta
+						{showQuestion ? (
+							<Question
 								setPresupuesto={setPresupuesto}
 								setRestante={setRestante}
-								setShowPregunta={setShowPregunta}
+								setShowQuestion={setShowQuestion}
 							/>
 						) : (
 							<div className='row'>
 								<div className='one-half column'>
 									<Form addNewGasto={addNewGasto} />
 								</div>
-								<div className='one-half column'>2</div>
+								<div className='one-half column'>
+									<List />
+								</div>
 							</div>
 						)}
 					</div>

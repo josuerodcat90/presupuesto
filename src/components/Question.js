@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Error from './Error';
 
-const Pregunta = ({ setPresupuesto, setRestante, setShowPregunta }) => {
+const Question = ({ setPresupuesto, setRestante, setShowQuestion }) => {
 	const [cantidad, setCantidad] = useState(0);
 	const [error, setError] = useState(false);
 
@@ -23,7 +23,7 @@ const Pregunta = ({ setPresupuesto, setRestante, setShowPregunta }) => {
 		setError(false);
 		setPresupuesto(cantidad);
 		setRestante(cantidad);
-		setShowPregunta(false);
+		setShowQuestion(false);
 	};
 
 	return (
@@ -50,4 +50,4 @@ const Pregunta = ({ setPresupuesto, setRestante, setShowPregunta }) => {
 	);
 };
 
-export default Pregunta;
+export default Question;
