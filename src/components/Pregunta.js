@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 
 import Error from './Error';
 
-const Pregunta = ({ setPresupuesto, setRestante }) => {
+const Pregunta = ({ setPresupuesto, setRestante, setShowPregunta }) => {
 	const [cantidad, setCantidad] = useState(0);
 	const [error, setError] = useState(false);
 
 	const definePrespuesto = (e) => {
-		setCantidad(parseInt(e.target.value));
+		setCantidad(parseInt(e.target.value, 10));
 	};
 
 	const addPresupuesto = (e) => {
@@ -23,6 +23,7 @@ const Pregunta = ({ setPresupuesto, setRestante }) => {
 		setError(false);
 		setPresupuesto(cantidad);
 		setRestante(cantidad);
+		setShowPregunta(false);
 	};
 
 	return (
